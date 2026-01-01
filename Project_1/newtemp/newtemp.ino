@@ -6,8 +6,8 @@
 #define DHTTYPE DHT11
 #define MQ2PIN 34
 
-const char* ssid = "TP-Link_51E3_5G";
-const char* password = "59223962";
+const char* ssid = "SUNBEAM";
+const char* password = "1234567890";
 const char* mqtt_server = "broker.emqx.io"; 
 const char* mqtt_topic = "env/data";
 
