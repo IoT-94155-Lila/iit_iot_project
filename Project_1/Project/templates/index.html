@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Environment Dashboard</title>
+
+    <!-- Auto refresh -->
+    <meta http-equiv="refresh" content="5">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+    <div class="title">
+        🌍 Smart Environment Monitoring System
+        <span>Live IoT Sensor Dashboard</span>
+    </div>
+</header>
+
+<!-- ===== Live Cards ===== -->
+<section class="cards">
+
+    <div class="card temp">
+        <h3>Temperature</h3>
+        <p>{{ latest.temperature }}<span>°C</span></p>
+        <div class="wave"></div>
+    </div>
+
+    <div class="card hum">
+        <h3>Humidity</h3>
+        <p>{{ latest.humidity }}<span>%</span></p>
+        <div class="wave"></div>
+    </div>
+
+    <div class="card gas">
+        <h3>Gas Level</h3>
+        <p>{{ latest.gas }}<span>ppm</span></p>
+        <div class="wave"></div>
+    </div>
+
+</section>
+
+<!-- ===== Table Section ===== -->
+<section class="table-section">
+    <h2>📊 Sensor Data History</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Temperature (°C)</th>
+                    <th>Humidity (%)</th>
+                    <th>Gas (ppm)</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.temperature }}</td>
+                    <td>{{ row.humidity }}</td>
+                    <td>{{ row.gas }}</td>
+                    <td>{{ row.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer>
+    © 2025 Smart Environment Monitoring | ESP32 + MQTT + MySQL + Flask
+</footer>
+
+</body>
+</html>
